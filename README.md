@@ -21,6 +21,7 @@ grep '45688_37289_water_0034' *.out | awk '{print $2}'
 Just for fun : you should inspect the pdb files by running them on pymol to see how Y4 interacts with NAM.
 
 **Answer**:
+
 Actually the shortest way I can think of is using sed
 ```
 gzip -d *gz ; sed -i 's/NMA X/NMA B/g' *.pdb ; gzip *pdb
@@ -30,7 +31,6 @@ gzip -d *gz ; sed -i 's/NMA X/NMA B/g' *.pdb ; gzip *pdb
 
 **Answer**: 
 
----
 First, we should find the column number of interface_delta_X
 ```
 > head -2 37128_45685_scores.out | tail -1| tr ' ' '\n' | awk 'NF'| nl|grep 'interface_delta_X'
