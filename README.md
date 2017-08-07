@@ -8,7 +8,7 @@
 ```
 wc -l *.out| awk '{print $2, $1-1}' > model_num.txt
 ```
-
+---
 2. What is the total_score of the model 45688_37289_water_0034?
 
 **Answer**:
@@ -16,7 +16,7 @@ wc -l *.out| awk '{print $2, $1-1}' > model_num.txt
 grep '45688_37289_water_0034' *.out | awk '{print $2}'
 -1174.020
 ```
-
+---
 3. In the folder "promissing90models": Change the ligand entries from chain X to chain B in each pdb file. (vim/sed)
 Just for fun : you should inspect the pdb files by running them on pymol to see how Y4 interacts with NAM.
 
@@ -25,11 +25,12 @@ Actually the shortest way I can think of is using sed
 ```
 gzip -d *gz ; sed -i 's/NMA X/NMA B/g' *.pdb ; gzip *pdb
 ```
-
+---
 4. output the column total score, delta_alpha, and model name from the file scores.out, then sort the output based on the interface_delta_X scores and save the results into the sorted_models.txt
 
 **Answer**: 
 
+---
 First, we should find the column number of interface_delta_X
 ```
 > head -2 37128_45685_scores.out | tail -1| tr ' ' '\n' | awk 'NF'| nl|grep 'interface_delta_X'
@@ -39,6 +40,7 @@ Then, we can sort and print out the output
 ```
 grep 'SCORE:   ' *.out | awk '{print $NF, $2, $50}' | sort -n -k3 > sorted_models.txt
 ```
+---
 
 5. make a new dir named "best_models", and move 10 best models with lowest sum of total_score and interface_delta_X to this dir. (awk, xargs))
 
