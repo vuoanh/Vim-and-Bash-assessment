@@ -35,6 +35,7 @@ Then, we can sort and print out the output
 ```
 grep 'SCORE:   ' *.out | awk '{print $NF, $2, $50}' | sort -n -k3 > sorted_models.txt
 ```
+
 5. make a new dir named "best_models", and move 10 best models with lowest sum of total_score and interface_delta_X to this dir. (awk, xargs))
 **Answer**: 
 ```
